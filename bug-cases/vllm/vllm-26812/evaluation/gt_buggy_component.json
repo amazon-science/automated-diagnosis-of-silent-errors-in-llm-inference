@@ -1,0 +1,5 @@
+{
+    "buggy_component": [
+        "root.model.layers.0.mamba"
+    ]
+}

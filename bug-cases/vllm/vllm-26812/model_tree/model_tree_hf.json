@@ -1,0 +1,324 @@
+{
+  "type": "Zamba2ForCausalLM",
+  "names": [
+    "root"
+  ],
+  "children": [
+    {
+      "type": "Zamba2Model",
+      "names": [
+        "model"
+      ],
+      "children": [
+        {
+          "type": "Embedding",
+          "names": [
+            "embed_tokens"
+          ],
+          "children": []
+        },
+        {
+          "type": "ModuleList",
+          "names": [
+            "layers"
+          ],
+          "children": [
+            {
+              "type": "Zamba2MambaDecoderLayer",
+              "names": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "36",
+                "37"
+              ],
+              "children": [
+                {
+                  "type": "Zamba2MambaMixer",
+                  "names": [
+                    "mamba"
+                  ],
+                  "children": [
+                    {
+                      "type": "SiLU",
+                      "names": [
+                        "act"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "Conv1d",
+                      "names": [
+                        "conv1d"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "Linear",
+                      "names": [
+                        "in_proj",
+                        "out_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "Zamba2RMSNormGated",
+                      "names": [
+                        "norm"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Zamba2RMSNorm",
+                  "names": [
+                    "input_layernorm"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "Zamba2HybridLayer",
+              "names": [
+                "5",
+                "11",
+                "17",
+                "23",
+                "29",
+                "35"
+              ],
+              "children": [
+                {
+                  "type": "Linear",
+                  "names": [
+                    "linear"
+                  ],
+                  "children": []
+                },
+                {
+                  "type": "Zamba2MambaDecoderLayer",
+                  "names": [
+                    "mamba_decoder"
+                  ],
+                  "children": [
+                    {
+                      "type": "Zamba2MambaMixer",
+                      "names": [
+                        "mamba"
+                      ],
+                      "children": [
+                        {
+                          "type": "SiLU",
+                          "names": [
+                            "act"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "Conv1d",
+                          "names": [
+                            "conv1d"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "Linear",
+                          "names": [
+                            "in_proj",
+                            "out_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "Zamba2RMSNormGated",
+                          "names": [
+                            "norm"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Zamba2RMSNorm",
+                      "names": [
+                        "input_layernorm"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Zamba2AttentionDecoderLayer",
+                  "names": [
+                    "shared_transformer"
+                  ],
+                  "children": [
+                    {
+                      "type": "Zamba2Attention",
+                      "names": [
+                        "self_attn"
+                      ],
+                      "children": [
+                        {
+                          "type": "Linear",
+                          "names": [
+                            "q_proj",
+                            "k_proj",
+                            "v_proj",
+                            "o_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "ModuleList",
+                          "names": [
+                            "linear_q_adapter_list",
+                            "linear_k_adapter_list",
+                            "linear_v_adapter_list"
+                          ],
+                          "children": [
+                            {
+                              "type": "Sequential",
+                              "names": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                              ],
+                              "children": [
+                                {
+                                  "type": "Linear",
+                                  "names": [
+                                    "0",
+                                    "1"
+                                  ],
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Zamba2MLP",
+                      "names": [
+                        "feed_forward"
+                      ],
+                      "children": [
+                        {
+                          "type": "Linear",
+                          "names": [
+                            "gate_up_proj",
+                            "down_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "GELUActivation",
+                          "names": [
+                            "act_fn"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "ModuleList",
+                          "names": [
+                            "gate_up_proj_adapter_list"
+                          ],
+                          "children": [
+                            {
+                              "type": "Sequential",
+                              "names": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                              ],
+                              "children": [
+                                {
+                                  "type": "Linear",
+                                  "names": [
+                                    "0",
+                                    "1"
+                                  ],
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Zamba2RMSNorm",
+                      "names": [
+                        "input_layernorm",
+                        "pre_ff_layernorm"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Zamba2RMSNorm",
+          "names": [
+            "final_layernorm"
+          ],
+          "children": []
+        },
+        {
+          "type": "Zamba2RotaryEmbedding",
+          "names": [
+            "rotary_emb"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Linear",
+      "names": [
+        "lm_head"
+      ],
+      "children": []
+    }
+  ]
+}

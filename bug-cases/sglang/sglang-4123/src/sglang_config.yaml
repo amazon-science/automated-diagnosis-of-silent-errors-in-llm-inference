@@ -1,0 +1,31 @@
+output_path: "${EKKA_ROOT}/bug-cases/sglang/sglang-4123/driver_output"
+seed: 1234
+
+mode: generate
+
+model:
+  model_path: "Qwen/Qwen2.5-VL-7B-Instruct"
+  tp_size: 1
+  log_level: "info"
+  disable_cuda_graph: true
+  dtype: "bfloat16"
+  attention_backend: "triton"
+  # strongly recommended for VLMs:
+  # chat_template: "qwen2-vl"   # or whatever template you use in your setup
+
+prompt:
+  mode: "messages"
+  messages:
+    - role: "user"
+      content:
+        - type: "image"
+          image: "${EKKA_ROOT}/bug-cases/sglang/sglang-4123/src/street.jpg"
+        # - type: "image"
+        #   image: "${EKKA_ROOT}/bug-cases/sglang/sglang-4123/src/kitchen.jpg"
+        - type: "text"
+          text: "Describe this image"
+
+generation:
+  max_tokens: 512
+  temperature: 0.0
+  top_p: 1.0

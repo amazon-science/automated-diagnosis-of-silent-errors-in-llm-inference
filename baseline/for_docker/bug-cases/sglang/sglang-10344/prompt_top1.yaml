@@ -1,0 +1,14 @@
+# sglang-10344 baseline prompt config
+problem_description_path: ${EKKA_ROOT}/baseline/for_docker/bug-cases/sglang/sglang-10344/issue_description.md
+reference_framework_model_path: /workspace/frameworks/vllm/vllm/model_executor/models/qwen2.py
+target_framework_model_path: /workspace/frameworks/sglang/python/sglang/srt/models/qwen2.py
+reference_framework_code_path: /workspace/frameworks/vllm/vllm
+target_framework_code_path: /workspace/frameworks/sglang/python
+reference_framework_config_path: /workspace/bug-cases/sglang/sglang-10344/vllm_config.yaml
+reference_framework_reproduction_script: /workspace/drivers/run_vllm_driver.sh
+target_framework_config_path: /workspace/bug-cases/sglang/sglang-10344/sglang_config.yaml
+target_framework_reproduction_script: /workspace/drivers/run_sglang_driver.sh
+model_tree_json_path: /workspace/bug-cases/sglang/sglang-10344/model_tree_sglang.json
+output_path: /docker_mount/output_sglang_10344_top1.json
+tp: 4
+top_k: 1

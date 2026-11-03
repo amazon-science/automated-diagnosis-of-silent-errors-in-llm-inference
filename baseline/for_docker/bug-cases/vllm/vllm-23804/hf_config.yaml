@@ -1,0 +1,24 @@
+output_path: "/workspace/driver_output"
+
+env:
+  CUDA_VISIBLE_DEVICES: "4,5,6,7"
+
+seed: 1234
+
+model:
+  name: "/docker_mount/models/Qwen3-Reranker-0.6B-seq-cls"
+  torch_dtype: "bfloat16"
+  tp_plan: "auto"
+
+mode: "reranker"
+
+reranker:
+  queries:
+    - "What is the capital of China?"
+    # - "Explain gravity"
+    # - "What is the capital of France?"
+
+  documents:
+    - "The capital of China is Beijing."
+    # - "Gravity is a force that attracts two bodies towards each other. It gives weight to physical objects and is responsible for the movement of planets around the sun."
+    # - "Gravity is a force that attracts two bodies towards each other. It gives weight to physical objects and is responsible for the movement of planets around the sun."

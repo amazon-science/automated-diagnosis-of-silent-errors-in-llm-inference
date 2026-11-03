@@ -1,0 +1,13 @@
+# sglang-10138 baseline prompt config
+problem_description_path: ${EKKA_ROOT}/baseline/for_docker/bug-cases/sglang/sglang-10138/issue_description.md
+reference_framework_model_path: /workspace/venvs/sglang/lib/python3.10/site-packages/transformers/models/qwen3_moe/modeling_qwen3_moe.py
+target_framework_model_path: /workspace/frameworks/sglang/python/sglang/srt/models/qwen3_moe.py
+reference_framework_code_path: /workspace/venvs/sglang/lib/python3.10/site-packages/transformers
+target_framework_code_path: /workspace/frameworks/sglang/python
+reference_framework_config_path: /workspace/bug-cases/sglang/sglang-10138/hf_config.yaml
+target_framework_config_path: /workspace/bug-cases/sglang/sglang-10138/sglang_config.yaml
+target_framework_reproduction_script: /workspace/drivers/run_sglang_driver.sh
+model_tree_json_path: /workspace/bug-cases/sglang/sglang-10138/model_tree_sglang.json
+output_path: /docker_mount/output_sglang_10138_top3.json
+tp: 4
+top_k: 3

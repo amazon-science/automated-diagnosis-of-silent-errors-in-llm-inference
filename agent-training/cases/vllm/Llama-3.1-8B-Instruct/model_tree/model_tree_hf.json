@@ -1,0 +1,141 @@
+{
+  "type": "LlamaForCausalLM",
+  "names": [
+    "model"
+  ],
+  "children": [
+    {
+      "type": "LlamaModel",
+      "names": [
+        "model"
+      ],
+      "children": [
+        {
+          "type": "Embedding",
+          "names": [
+            "embed_tokens"
+          ],
+          "children": []
+        },
+        {
+          "type": "ModuleList",
+          "names": [
+            "layers"
+          ],
+          "children": [
+            {
+              "type": "LlamaDecoderLayer",
+              "names": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31"
+              ],
+              "children": [
+                {
+                  "type": "LlamaAttention",
+                  "names": [
+                    "self_attn"
+                  ],
+                  "children": [
+                    {
+                      "type": "Linear",
+                      "names": [
+                        "q_proj",
+                        "k_proj",
+                        "v_proj",
+                        "o_proj"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "LlamaMLP",
+                  "names": [
+                    "mlp"
+                  ],
+                  "children": [
+                    {
+                      "type": "Linear",
+                      "names": [
+                        "gate_proj",
+                        "up_proj",
+                        "down_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "SiLUActivation",
+                      "names": [
+                        "act_fn"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "LlamaRMSNorm",
+                  "names": [
+                    "input_layernorm",
+                    "post_attention_layernorm"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "LlamaRMSNorm",
+          "names": [
+            "norm"
+          ],
+          "children": []
+        },
+        {
+          "type": "LlamaRotaryEmbedding",
+          "names": [
+            "rotary_emb"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Linear",
+      "names": [
+        "lm_head"
+      ],
+      "children": []
+    }
+  ]
+}

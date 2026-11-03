@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "external_directory": "allow"
+  },
+  "provider": {
+    "litellm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM",
+      "options": {
+        "baseURL": "http://localhost:4000/v1"
+      },
+      "models": {
+        "bedrock-claude-sonnet-4.5": {
+          "name": "Claude Sonnet 4.5"
+        },
+        "anthropic-claude-sonnet-4.5": {
+          "name": "Claude Sonnet 4.5 (Anthropic API)"
+        }
+      }
+    }
+  }
+}

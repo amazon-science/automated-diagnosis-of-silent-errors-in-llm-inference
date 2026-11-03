@@ -1,0 +1,356 @@
+{
+  "type": "Llama4ForConditionalGeneration",
+  "names": [
+    "root"
+  ],
+  "children": [
+    {
+      "type": "Llama4ForCausalLM",
+      "names": [
+        "language_model"
+      ],
+      "children": [
+        {
+          "type": "Llama4Model",
+          "names": [
+            "model"
+          ],
+          "children": [
+            {
+              "type": "VocabParallelEmbedding",
+              "names": [
+                "embed_tokens"
+              ],
+              "children": []
+            },
+            {
+              "type": "ModuleList",
+              "names": [
+                "layers"
+              ],
+              "children": [
+                {
+                  "type": "Llama4DecoderLayer",
+                  "names": [
+                    "0",
+                    "1",
+                    "2",
+                    "4",
+                    "5",
+                    "6",
+                    "8",
+                    "9",
+                    "10",
+                    "12",
+                    "13",
+                    "14",
+                    "16",
+                    "17",
+                    "18",
+                    "20",
+                    "21",
+                    "22",
+                    "24",
+                    "25",
+                    "26",
+                    "28",
+                    "29",
+                    "30",
+                    "32",
+                    "33",
+                    "34",
+                    "36",
+                    "37",
+                    "38",
+                    "40",
+                    "41",
+                    "42",
+                    "44",
+                    "45",
+                    "46"
+                  ],
+                  "children": [
+                    {
+                      "type": "Llama4Attention",
+                      "names": [
+                        "self_attn"
+                      ],
+                      "children": [
+                        {
+                          "type": "RMSNorm",
+                          "names": [
+                            "qk_norm"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "QKVParallelLinear",
+                          "names": [
+                            "qkv_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "o_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RotaryEmbeddingWrapper",
+                          "names": [
+                            "rotary_emb"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RadixAttention",
+                          "names": [
+                            "attn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Llama4MoE",
+                      "names": [
+                        "feed_forward"
+                      ],
+                      "children": [
+                        {
+                          "type": "ReplicatedLinear",
+                          "names": [
+                            "router"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "TopK",
+                          "names": [
+                            "topk"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "FusedMoE",
+                          "names": [
+                            "experts"
+                          ],
+                          "children": [
+                            {
+                              "type": "UnquantizedFusedMoEMethod",
+                              "names": [
+                                "quant_method"
+                              ],
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "LlamaMLP",
+                          "names": [
+                            "shared_expert"
+                          ],
+                          "children": [
+                            {
+                              "type": "MergedColumnParallelLinear",
+                              "names": [
+                                "gate_up_proj"
+                              ],
+                              "children": []
+                            },
+                            {
+                              "type": "RowParallelLinear",
+                              "names": [
+                                "down_proj"
+                              ],
+                              "children": []
+                            },
+                            {
+                              "type": "SiluAndMul",
+                              "names": [
+                                "act_fn"
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "RMSNorm",
+                      "names": [
+                        "input_layernorm",
+                        "post_attention_layernorm"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Llama4DecoderLayer",
+                  "names": [
+                    "3",
+                    "7",
+                    "11",
+                    "15",
+                    "19",
+                    "23",
+                    "27",
+                    "31",
+                    "35",
+                    "39",
+                    "43",
+                    "47"
+                  ],
+                  "children": [
+                    {
+                      "type": "Llama4Attention",
+                      "names": [
+                        "self_attn"
+                      ],
+                      "children": [
+                        {
+                          "type": "QKVParallelLinear",
+                          "names": [
+                            "qkv_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "o_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RadixAttention",
+                          "names": [
+                            "attn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Llama4MoE",
+                      "names": [
+                        "feed_forward"
+                      ],
+                      "children": [
+                        {
+                          "type": "ReplicatedLinear",
+                          "names": [
+                            "router"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "TopK",
+                          "names": [
+                            "topk"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "FusedMoE",
+                          "names": [
+                            "experts"
+                          ],
+                          "children": [
+                            {
+                              "type": "UnquantizedFusedMoEMethod",
+                              "names": [
+                                "quant_method"
+                              ],
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "LlamaMLP",
+                          "names": [
+                            "shared_expert"
+                          ],
+                          "children": [
+                            {
+                              "type": "MergedColumnParallelLinear",
+                              "names": [
+                                "gate_up_proj"
+                              ],
+                              "children": []
+                            },
+                            {
+                              "type": "RowParallelLinear",
+                              "names": [
+                                "down_proj"
+                              ],
+                              "children": []
+                            },
+                            {
+                              "type": "SiluAndMul",
+                              "names": [
+                                "act_fn"
+                              ],
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "RMSNorm",
+                      "names": [
+                        "input_layernorm",
+                        "post_attention_layernorm"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "RMSNorm",
+              "names": [
+                "norm"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "ParallelLMHead",
+          "names": [
+            "lm_head"
+          ],
+          "children": []
+        },
+        {
+          "type": "LogitsProcessor",
+          "names": [
+            "logits_processor"
+          ],
+          "children": []
+        },
+        {
+          "type": "Pooler",
+          "names": [
+            "pooler"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "LogitsProcessor",
+      "names": [
+        "logits_processor"
+      ],
+      "children": []
+    }
+  ]
+}

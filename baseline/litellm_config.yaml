@@ -1,0 +1,24 @@
+# LiteLLM proxy config used by the baseline agents (mini-swe-agent and OpenCode).
+# Start it on the host before running the baselines:
+#   litellm --config baseline/litellm_config.yaml --port 4000
+# The containers run with --network host and reach the proxy at http://localhost:4000/v1.
+#
+# Both entries expose Claude Sonnet 4.5; pick the one matching your credentials.
+# mini-swe-agent uses the model name in baseline/for_docker/mini-swe-agent-config/mini.yaml;
+# OpenCode uses OPENCODE_MODEL in baseline/run_opencode_agent.sh.
+
+model_list:
+  # Amazon Bedrock (AWS credentials from the environment)
+  - model_name: bedrock-claude-sonnet-4.5
+    litellm_params:
+      model: bedrock/us.anthropic.claude-sonnet-4-5-20250929-v1:0
+      aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_session_token: os.environ/AWS_SESSION_TOKEN
+      aws_region_name: os.environ/AWS_REGION_NAME
+
+  # Anthropic API (ANTHROPIC_API_KEY from the environment)
+  - model_name: anthropic-claude-sonnet-4.5
+    litellm_params:
+      model: anthropic/claude-sonnet-4-5-20250929
+      api_key: os.environ/ANTHROPIC_API_KEY

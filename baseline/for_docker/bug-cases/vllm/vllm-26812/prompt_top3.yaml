@@ -1,0 +1,10 @@
+# vllm-26812 baseline prompt config
+problem_description_path: ${EKKA_ROOT}/baseline/for_docker/bug-cases/vllm/vllm-26812/issue_description.md
+reference_framework_model_path: /workspace/venvs/vllm/lib/python3.10/site-packages/transformers/models/zamba2/modeling_zamba2.py
+target_framework_model_path: /workspace/frameworks/vllm/vllm/model_executor/models/zamba2.py
+reference_framework_config_path: /workspace/bug-cases/vllm/vllm-26812/hf_config.yaml
+target_framework_config_path: /workspace/bug-cases/vllm/vllm-26812/vllm_config.yaml
+model_tree_json_path: /workspace/bug-cases/vllm/vllm-26812/model_tree_vllm.json
+output_path: /docker_mount/output_vllm_26812_top3.json
+tp: 1
+top_k: 3

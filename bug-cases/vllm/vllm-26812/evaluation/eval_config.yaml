@@ -1,0 +1,5 @@
+# Evaluation config for vllm-26812.
+# Pass the agent run directory with --result-dir (e.g. bug-cases/vllm/vllm-26812/diagnosis_output_<timestamp>).
+gt_dir: ${EKKA_ROOT}/bug-cases/vllm/vllm-26812/evaluation
+error_ratio_threshold: 1.5
+save_report: true

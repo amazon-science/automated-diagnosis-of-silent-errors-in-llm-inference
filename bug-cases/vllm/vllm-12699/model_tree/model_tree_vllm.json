@@ -1,0 +1,348 @@
+{
+  "type": "Qwen2VLForConditionalGeneration",
+  "names": [
+    "model"
+  ],
+  "children": [
+    {
+      "type": "Qwen2VisionTransformer",
+      "names": [
+        "visual"
+      ],
+      "children": [
+        {
+          "type": "Qwen2VisionPatchEmbed",
+          "names": [
+            "patch_embed"
+          ],
+          "children": [
+            {
+              "type": "Conv3d",
+              "names": [
+                "proj"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "Qwen2VisionRotaryEmbedding",
+          "names": [
+            "rotary_pos_emb"
+          ],
+          "children": []
+        },
+        {
+          "type": "ModuleList",
+          "names": [
+            "blocks"
+          ],
+          "children": [
+            {
+              "type": "Qwen2VisionBlock",
+              "names": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31"
+              ],
+              "children": [
+                {
+                  "type": "LayerNorm",
+                  "names": [
+                    "norm1",
+                    "norm2"
+                  ],
+                  "children": []
+                },
+                {
+                  "type": "Qwen2VisionAttention",
+                  "names": [
+                    "attn"
+                  ],
+                  "children": [
+                    {
+                      "type": "ColumnParallelLinear",
+                      "names": [
+                        "qkv"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RowParallelLinear",
+                      "names": [
+                        "proj"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Qwen2VisionMLP",
+                  "names": [
+                    "mlp"
+                  ],
+                  "children": [
+                    {
+                      "type": "ColumnParallelLinear",
+                      "names": [
+                        "fc1"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "QuickGELU",
+                      "names": [
+                        "act"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RowParallelLinear",
+                      "names": [
+                        "fc2"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Qwen2VisionPatchMerger",
+          "names": [
+            "merger"
+          ],
+          "children": [
+            {
+              "type": "LayerNorm",
+              "names": [
+                "ln_q"
+              ],
+              "children": []
+            },
+            {
+              "type": "ModuleList",
+              "names": [
+                "mlp"
+              ],
+              "children": [
+                {
+                  "type": "ColumnParallelLinear",
+                  "names": [
+                    "0"
+                  ],
+                  "children": []
+                },
+                {
+                  "type": "GELU",
+                  "names": [
+                    "1"
+                  ],
+                  "children": []
+                },
+                {
+                  "type": "RowParallelLinear",
+                  "names": [
+                    "2"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Qwen2ForCausalLM",
+      "names": [
+        "language_model"
+      ],
+      "children": [
+        {
+          "type": "Qwen2Model",
+          "names": [
+            "model"
+          ],
+          "children": [
+            {
+              "type": "VocabParallelEmbedding",
+              "names": [
+                "embed_tokens"
+              ],
+              "children": []
+            },
+            {
+              "type": "ModuleList",
+              "names": [
+                "layers"
+              ],
+              "children": [
+                {
+                  "type": "Qwen2DecoderLayer",
+                  "names": [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27"
+                  ],
+                  "children": [
+                    {
+                      "type": "Qwen2Attention",
+                      "names": [
+                        "self_attn"
+                      ],
+                      "children": [
+                        {
+                          "type": "QKVParallelLinear",
+                          "names": [
+                            "qkv_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "o_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RotaryEmbeddingWrapper",
+                          "names": [
+                            "rotary_emb"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "Attention",
+                          "names": [
+                            "attn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Qwen2MLP",
+                      "names": [
+                        "mlp"
+                      ],
+                      "children": [
+                        {
+                          "type": "MergedColumnParallelLinear",
+                          "names": [
+                            "gate_up_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "down_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "SiluAndMul",
+                          "names": [
+                            "act_fn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "RMSNorm",
+                      "names": [
+                        "input_layernorm",
+                        "post_attention_layernorm"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "RMSNorm",
+              "names": [
+                "norm"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "ParallelLMHead",
+          "names": [
+            "lm_head"
+          ],
+          "children": []
+        },
+        {
+          "type": "LogitsProcessor",
+          "names": [
+            "logits_processor"
+          ],
+          "children": []
+        }
+      ]
+    }
+  ]
+}

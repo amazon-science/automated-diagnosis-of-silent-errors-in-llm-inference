@@ -1,0 +1,10 @@
+# vllm-16296 baseline prompt config
+problem_description_path: ${EKKA_ROOT}/baseline/for_docker/bug-cases/vllm/vllm-16296/issue_description.md
+reference_framework_model_path: /workspace/venvs/vllm/lib/python3.10/site-packages/transformers/models/llama4/modeling_llama4.py
+target_framework_model_path: /workspace/frameworks/vllm/vllm/model_executor/models/llama4.py
+reference_framework_config_path: /workspace/bug-cases/vllm/vllm-16296/hf_config.yaml
+target_framework_config_path: /workspace/bug-cases/vllm/vllm-16296/vllm_config.yaml
+model_tree_json_path: /workspace/bug-cases/vllm/vllm-16296/model_tree_vllm.json
+output_path: /docker_mount/output_vllm_16296_top1.json
+tp: 8
+top_k: 1

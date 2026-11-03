@@ -1,0 +1,324 @@
+{
+  "type": "WhisperForConditionalGeneration",
+  "names": [
+    "root"
+  ],
+  "children": [
+    {
+      "type": "WhisperModel",
+      "names": [
+        "model"
+      ],
+      "children": [
+        {
+          "type": "WhisperEncoder",
+          "names": [
+            "encoder"
+          ],
+          "children": [
+            {
+              "type": "Conv1d",
+              "names": [
+                "conv1",
+                "conv2"
+              ],
+              "children": []
+            },
+            {
+              "type": "ModuleList",
+              "names": [
+                "layers"
+              ],
+              "children": [
+                {
+                  "type": "WhisperEncoderLayer",
+                  "names": [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31"
+                  ],
+                  "children": [
+                    {
+                      "type": "WhisperAttention",
+                      "names": [
+                        "self_attn"
+                      ],
+                      "children": [
+                        {
+                          "type": "QKVParallelLinear",
+                          "names": [
+                            "qkv_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "out_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "WhisperEncoderAttention",
+                          "names": [
+                            "attn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "LayerNorm",
+                      "names": [
+                        "self_attn_layer_norm",
+                        "final_layer_norm"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "WhisperMLP",
+                      "names": [
+                        "mlp"
+                      ],
+                      "children": [
+                        {
+                          "type": "GELU",
+                          "names": [
+                            "activation_fn"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "ColumnParallelLinear",
+                          "names": [
+                            "fc1"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "fc2"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LayerNorm",
+              "names": [
+                "layer_norm"
+              ],
+              "children": []
+            },
+            {
+              "type": "Embedding",
+              "names": [
+                "embed_positions"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "WhisperDecoder",
+          "names": [
+            "decoder"
+          ],
+          "children": [
+            {
+              "type": "Embedding",
+              "names": [
+                "embed_tokens"
+              ],
+              "children": []
+            },
+            {
+              "type": "WhisperPositionalEmbedding",
+              "names": [
+                "embed_positions"
+              ],
+              "children": []
+            },
+            {
+              "type": "ModuleList",
+              "names": [
+                "layers"
+              ],
+              "children": [
+                {
+                  "type": "WhisperDecoderLayer",
+                  "names": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "children": [
+                    {
+                      "type": "WhisperAttention",
+                      "names": [
+                        "self_attn"
+                      ],
+                      "children": [
+                        {
+                          "type": "QKVParallelLinear",
+                          "names": [
+                            "qkv_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "out_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "Attention",
+                          "names": [
+                            "attn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "LayerNorm",
+                      "names": [
+                        "self_attn_layer_norm",
+                        "encoder_attn_layer_norm",
+                        "final_layer_norm"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "WhisperCrossAttention",
+                      "names": [
+                        "encoder_attn"
+                      ],
+                      "children": [
+                        {
+                          "type": "ColumnParallelLinear",
+                          "names": [
+                            "q_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "QKVParallelLinear",
+                          "names": [
+                            "kv_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "out_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "CrossAttention",
+                          "names": [
+                            "attn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "WhisperMLP",
+                      "names": [
+                        "mlp"
+                      ],
+                      "children": [
+                        {
+                          "type": "GELU",
+                          "names": [
+                            "activation_fn"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "ColumnParallelLinear",
+                          "names": [
+                            "fc1"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "fc2"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LayerNorm",
+              "names": [
+                "layer_norm"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ParallelLMHead",
+      "names": [
+        "proj_out"
+      ],
+      "children": []
+    },
+    {
+      "type": "LogitsProcessor",
+      "names": [
+        "logits_processor"
+      ],
+      "children": []
+    }
+  ]
+}

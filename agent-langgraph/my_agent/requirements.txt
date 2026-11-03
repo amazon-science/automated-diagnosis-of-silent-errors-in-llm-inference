@@ -1,0 +1,14 @@
+# Agent (diagnosis workflow) dependencies
+langgraph
+langchain
+langchain-core
+langchain-community
+# LLM providers: install the one you use (both are listed for convenience)
+langchain-aws        # provider: bedrock
+langchain-anthropic  # provider: anthropic
+transformers         # module-tree utilities (scripts/generate_module_tree)
+pyyaml
+python-dotenv
+numpy
+torch
+matplotlib

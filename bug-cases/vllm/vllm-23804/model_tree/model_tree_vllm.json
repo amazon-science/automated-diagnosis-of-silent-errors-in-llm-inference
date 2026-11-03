@@ -1,0 +1,168 @@
+{
+  "type": "Qwen3ForSequenceClassification",
+  "names": [
+    "root"
+  ],
+  "children": [
+    {
+      "type": "Qwen3Model",
+      "names": [
+        "model"
+      ],
+      "children": [
+        {
+          "type": "VocabParallelEmbedding",
+          "names": [
+            "embed_tokens"
+          ],
+          "children": []
+        },
+        {
+          "type": "ModuleList",
+          "names": [
+            "layers"
+          ],
+          "children": [
+            {
+              "type": "Qwen3DecoderLayer",
+              "names": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27"
+              ],
+              "children": [
+                {
+                  "type": "Qwen3Attention",
+                  "names": [
+                    "self_attn"
+                  ],
+                  "children": [
+                    {
+                      "type": "QKVParallelLinear",
+                      "names": [
+                        "qkv_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RowParallelLinear",
+                      "names": [
+                        "o_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RotaryEmbedding",
+                      "names": [
+                        "rotary_emb"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "Attention",
+                      "names": [
+                        "attn"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RMSNorm",
+                      "names": [
+                        "q_norm",
+                        "k_norm"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Qwen2MLP",
+                  "names": [
+                    "mlp"
+                  ],
+                  "children": [
+                    {
+                      "type": "MergedColumnParallelLinear",
+                      "names": [
+                        "gate_up_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RowParallelLinear",
+                      "names": [
+                        "down_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "SiluAndMul",
+                      "names": [
+                        "act_fn"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "RMSNorm",
+                  "names": [
+                    "input_layernorm",
+                    "post_attention_layernorm"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "RMSNorm",
+          "names": [
+            "norm"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "ReplicatedLinear",
+      "names": [
+        "score"
+      ],
+      "children": []
+    },
+    {
+      "type": "DispatchPooler",
+      "names": [
+        "pooler"
+      ],
+      "children": []
+    }
+  ]
+}

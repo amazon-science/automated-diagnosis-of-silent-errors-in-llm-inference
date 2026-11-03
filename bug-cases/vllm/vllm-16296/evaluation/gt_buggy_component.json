@@ -1,0 +1,8 @@
+{
+    "buggy_component": [
+        "model.language_model.model.layers.0.self_attn.q_norm",
+        "model.language_model.model.layers.0.self_attn.k_norm",
+        "root.language_model.model.layers.0.self_attn.q_norm",
+        "root.language_model.model.layers.0.self_attn.k_norm"
+    ]
+}

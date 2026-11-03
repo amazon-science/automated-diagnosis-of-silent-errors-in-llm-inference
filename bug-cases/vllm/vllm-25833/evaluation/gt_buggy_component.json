@@ -1,0 +1,7 @@
+{
+    "buggy_component": [
+        "root.model.layers.1.mlp.gate",
+        "root.model.layers.1.mlp.experts",
+        "root.model.layers.1.mlp"
+    ]
+}

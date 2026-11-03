@@ -1,0 +1,10 @@
+# vllm-17689 baseline prompt config
+problem_description_path: ${EKKA_ROOT}/baseline/for_docker/bug-cases/vllm/vllm-17689/issue_description.md
+reference_framework_model_path: /workspace/venvs/vllm/lib/python3.10/site-packages/transformers/models/gemma3/modeling_gemma3.py
+target_framework_model_path: /workspace/frameworks/vllm/vllm/model_executor/models/gemma3.py
+reference_framework_config_path: /workspace/bug-cases/vllm/vllm-17689/hf_config.yaml
+target_framework_config_path: /workspace/bug-cases/vllm/vllm-17689/vllm_config.yaml
+model_tree_json_path: /workspace/bug-cases/vllm/vllm-17689/model_tree_vllm.json
+output_path: /docker_mount/output_vllm_17689_top3.json
+tp: 4
+top_k: 3

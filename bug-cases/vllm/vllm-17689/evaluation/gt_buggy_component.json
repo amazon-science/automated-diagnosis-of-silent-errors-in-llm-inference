@@ -1,0 +1,4 @@
+{
+    "buggy_component": [
+        "root.language_model.model.layers.5.self_attn.rotary_emb", "root.language_model.model.layers.5.self_attn.attn", "root.language_model.model.layers.5.self_attn.o_proj"]
+}

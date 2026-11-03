@@ -1,0 +1,5 @@
+# Evaluation config for sglang-10344.
+# Pass the agent run directory with --result-dir (e.g. bug-cases/sglang/sglang-10344/diagnosis_output_<timestamp>).
+gt_dir: ${EKKA_ROOT}/bug-cases/sglang/sglang-10344/evaluation
+error_ratio_threshold: 1.5
+save_report: true

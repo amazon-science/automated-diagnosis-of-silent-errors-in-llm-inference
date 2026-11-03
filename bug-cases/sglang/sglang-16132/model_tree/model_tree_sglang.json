@@ -1,0 +1,305 @@
+{
+  "type": "QwenImageTransformer2DModel",
+  "names": [
+    "root"
+  ],
+  "children": [
+    {
+      "type": "QwenEmbedRope",
+      "names": [
+        "rotary_emb"
+      ],
+      "children": []
+    },
+    {
+      "type": "QwenTimestepProjEmbeddings",
+      "names": [
+        "time_text_embed"
+      ],
+      "children": [
+        {
+          "type": "Timesteps",
+          "names": [
+            "time_proj"
+          ],
+          "children": []
+        },
+        {
+          "type": "TimestepEmbedding",
+          "names": [
+            "timestep_embedder"
+          ],
+          "children": [
+            {
+              "type": "Linear",
+              "names": [
+                "linear_1",
+                "linear_2"
+              ],
+              "children": []
+            },
+            {
+              "type": "SiLU",
+              "names": [
+                "act"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "RMSNorm",
+      "names": [
+        "txt_norm"
+      ],
+      "children": []
+    },
+    {
+      "type": "Linear",
+      "names": [
+        "img_in",
+        "txt_in",
+        "proj_out"
+      ],
+      "children": []
+    },
+    {
+      "type": "ModuleList",
+      "names": [
+        "transformer_blocks"
+      ],
+      "children": [
+        {
+          "type": "QwenImageTransformerBlock",
+          "names": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59"
+          ],
+          "children": [
+            {
+              "type": "Sequential",
+              "names": [
+                "img_mod",
+                "txt_mod"
+              ],
+              "children": [
+                {
+                  "type": "SiLU",
+                  "names": [
+                    "0"
+                  ],
+                  "children": []
+                },
+                {
+                  "type": "Linear",
+                  "names": [
+                    "1"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "LayerNorm",
+              "names": [
+                "img_norm1",
+                "img_norm2",
+                "txt_norm1",
+                "txt_norm2"
+              ],
+              "children": []
+            },
+            {
+              "type": "QwenImageCrossAttention",
+              "names": [
+                "attn"
+              ],
+              "children": [
+                {
+                  "type": "ReplicatedLinear",
+                  "names": [
+                    "to_q",
+                    "to_k",
+                    "to_v",
+                    "add_k_proj",
+                    "add_v_proj",
+                    "add_q_proj",
+                    "to_add_out"
+                  ],
+                  "children": []
+                },
+                {
+                  "type": "RMSNorm",
+                  "names": [
+                    "norm_q",
+                    "norm_k",
+                    "norm_added_q",
+                    "norm_added_k"
+                  ],
+                  "children": []
+                },
+                {
+                  "type": "ModuleList",
+                  "names": [
+                    "to_out"
+                  ],
+                  "children": [
+                    {
+                      "type": "ReplicatedLinear",
+                      "names": [
+                        "0"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "USPAttention",
+                  "names": [
+                    "attn"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "FeedForward",
+              "names": [
+                "img_mlp",
+                "txt_mlp"
+              ],
+              "children": [
+                {
+                  "type": "ModuleList",
+                  "names": [
+                    "net"
+                  ],
+                  "children": [
+                    {
+                      "type": "GELU",
+                      "names": [
+                        "0"
+                      ],
+                      "children": [
+                        {
+                          "type": "Linear",
+                          "names": [
+                            "proj"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Dropout",
+                      "names": [
+                        "1"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "Linear",
+                      "names": [
+                        "2"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "AdaLayerNormContinuous",
+      "names": [
+        "norm_out"
+      ],
+      "children": [
+        {
+          "type": "SiLU",
+          "names": [
+            "silu"
+          ],
+          "children": []
+        },
+        {
+          "type": "Linear",
+          "names": [
+            "linear"
+          ],
+          "children": []
+        },
+        {
+          "type": "LayerNorm",
+          "names": [
+            "norm"
+          ],
+          "children": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+output_path: "${EKKA_ROOT}/bug-cases/vllm/vllm-23804/driver_output"
+env:
+  CUDA_VISIBLE_DEVICES: "0,1,2,3"
+seed: 1234
+
+model:
+  name: "tomaarsen/Qwen3-Reranker-0.6B-seq-cls"
+  torch_dtype: "float32"
+  tp_plan: "auto"
+
+mode: "reranker"
+
+reranker:
+  queries:
+    - "What is the capital of China?"
+    # - "Explain gravity"
+    # - "What is the capital of France?"
+
+  documents:
+    - "The capital of China is Beijing."
+    # - "Gravity is a force that attracts two bodies towards each other. It gives weight to physical objects and is responsible for the movement of planets around the sun."
+    # - "Gravity is a force that attracts two bodies towards each other. It gives weight to physical objects and is responsible for the movement of planets around the sun."
+
+activation_collector:
+  enabled: true
+  save_path: "${EKKA_ACTIVATION_DIR}/bug-cases/vllm/vllm-23804"
+  save_prefix: "hf_activation_fp32"

@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Secrets / local settings
+.env
+.env.*
+!.env.example
+
+# Tensors and model weights
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Collected activations (default EKKA_ACTIVATION_DIR) and baseline docker mount
+activations/
+docker_mount/
+
+# Run outputs
+diagnosis_output*
+driver_output*
+eval_report.json
+agent-training/logs
+logs/
+
+# Generated class indexes (scripts/update_index/build_index.sh)
+reference_index*
+target_index*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

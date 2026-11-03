@@ -1,0 +1,270 @@
+{
+  "type": "Ernie4_5_MoeForCausalLM",
+  "names": [
+    "root"
+  ],
+  "children": [
+    {
+      "type": "Ernie4_5_MoeModel",
+      "names": [
+        "model"
+      ],
+      "children": [
+        {
+          "type": "VocabParallelEmbedding",
+          "names": [
+            "embed_tokens"
+          ],
+          "children": []
+        },
+        {
+          "type": "ModuleList",
+          "names": [
+            "layers"
+          ],
+          "children": [
+            {
+              "type": "Ernie4_5_MoeDecoderLayer",
+              "names": [
+                "0"
+              ],
+              "children": [
+                {
+                  "type": "Ernie4_5_MoeAttention",
+                  "names": [
+                    "self_attn"
+                  ],
+                  "children": [
+                    {
+                      "type": "QKVParallelLinear",
+                      "names": [
+                        "qkv_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RowParallelLinear",
+                      "names": [
+                        "o_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RotaryEmbeddingWrapper",
+                      "names": [
+                        "rotary_emb"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "Attention",
+                      "names": [
+                        "attn"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Ernie4_5_MoeMLP",
+                  "names": [
+                    "mlp"
+                  ],
+                  "children": [
+                    {
+                      "type": "MergedColumnParallelLinear",
+                      "names": [
+                        "gate_up_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RowParallelLinear",
+                      "names": [
+                        "down_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "SiluAndMul",
+                      "names": [
+                        "act_fn"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "RMSNorm",
+                  "names": [
+                    "input_layernorm",
+                    "post_attention_layernorm"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "Ernie4_5_MoeDecoderLayer",
+              "names": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27"
+              ],
+              "children": [
+                {
+                  "type": "Ernie4_5_MoeAttention",
+                  "names": [
+                    "self_attn"
+                  ],
+                  "children": [
+                    {
+                      "type": "QKVParallelLinear",
+                      "names": [
+                        "qkv_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RowParallelLinear",
+                      "names": [
+                        "o_proj"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "RotaryEmbeddingWrapper",
+                      "names": [
+                        "rotary_emb"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "Attention",
+                      "names": [
+                        "attn"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Ernie4_5_MoeMoE",
+                  "names": [
+                    "mlp"
+                  ],
+                  "children": [
+                    {
+                      "type": "ReplicatedLinear",
+                      "names": [
+                        "gate"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "type": "FusedMoE",
+                      "names": [
+                        "experts"
+                      ],
+                      "children": [
+                        {
+                          "type": "UnquantizedFusedMoEMethod",
+                          "names": [
+                            "quant_method"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Ernie4_5_MoeMLP",
+                      "names": [
+                        "shared_experts"
+                      ],
+                      "children": [
+                        {
+                          "type": "MergedColumnParallelLinear",
+                          "names": [
+                            "gate_up_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "RowParallelLinear",
+                          "names": [
+                            "down_proj"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "type": "SiluAndMul",
+                          "names": [
+                            "act_fn"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "RMSNorm",
+                  "names": [
+                    "input_layernorm",
+                    "post_attention_layernorm"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "RMSNorm",
+          "names": [
+            "norm"
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "ParallelLMHead",
+      "names": [
+        "lm_head"
+      ],
+      "children": []
+    },
+    {
+      "type": "LogitsProcessor",
+      "names": [
+        "logits_processor"
+      ],
+      "children": []
+    }
+  ]
+}

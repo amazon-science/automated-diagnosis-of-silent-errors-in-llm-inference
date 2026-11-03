@@ -1,0 +1,15 @@
+# Ekka training config for Qwen2.5-7B-Instruct
+# ${EKKA_ROOT} and ${EKKA_ACTIVATION_DIR} are expanded at load time (see README).
+engine_type: vllm
+mode: training
+error_threshold: 0.01
+issue_path: '${EKKA_ROOT}/agent-training/cases/vllm/Qwen2.5-7B-Instruct/src/issue_description.md'
+input_path: '${EKKA_ROOT}/agent-training/cases/vllm/Qwen2.5-7B-Instruct'
+output_path: '${EKKA_ROOT}/agent-training/cases/vllm/Qwen2.5-7B-Instruct/diagnosis_output'
+activation_path: '${EKKA_ACTIVATION_DIR}/agent-training/cases/vllm/Qwen2.5-7B-Instruct'
+ref_activation_prefix: hf_activation_rank0
+ref_activation_fp32_prefix: hf_activation_fp32_rank0
+target_activation_prefix: vllm_activation_rank0
+provider: bedrock
+model_id: 'global.anthropic.claude-sonnet-4-5-20250929-v1:0'
+model_kwargs: {max_tokens: 64000}
